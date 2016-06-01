@@ -13,7 +13,7 @@ driver.get("http://stagingqa.dmplocal.com/main/index.php?p=admin.users.manage")
 emailInput = driver.find_element_by_xpath("//input[@name='email']")
 emailInput.send_keys("rkhan@distribion.com")
 passwordInput = driver.find_element_by_xpath("//input[@name='password']")
-passwordInput.send_keys("#Cinco5")
+passwordInput.send_keys("")
 loginButton = driver.find_element_by_xpath("//input[@type='submit']")
 loginButton.click()
 
