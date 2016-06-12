@@ -48,3 +48,6 @@ for option in select.find_elements_by_tag_name("option"):
     if option.text == "Begins with":
         option.click()
 	break
+
+
+driver.close()
