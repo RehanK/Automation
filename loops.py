@@ -49,5 +49,4 @@ for option in select.find_elements_by_tag_name("option"):
         option.click()
 	break
 
-
 driver.close()
