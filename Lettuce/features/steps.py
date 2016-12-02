@@ -34,8 +34,8 @@ def search_for_keyword(step, keyword):
     searchBar = world.browser.find_element_by_xpath(".//*[@id='mam3_keyword_search']")
     searchBar.send_keys(keyword)
 
-@step("I search container")
-def search_container(step):
-    searchContainer = world.browser.find_element_by_id("mam3_search")
-    sButton = searchContainer.find_element_by_class_name("ui-state-default")
-    sButton.click()
+@step("I enter a new email address")
+def enter_email(step):
+    emailField = world.browser.find_element_by_xpath("//*[@name]='email']")
+    emailField.send_keys("newuser" + str(randint(0,999)) + "@mailinator.com")
+
