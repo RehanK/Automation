@@ -11,31 +11,29 @@ import time
 from random import randint
 from nose.tools import assert_equals
 
-@step("I login")
-def login_test(step):
-    emailInput = world.browser.find_element_by_xpath("//input[@name='email']")
-    emailInput.send_keys("rkhan@distribion.com")
-    passwordInput = world.browser.find_element_by_xpath("//input[@name='password']")
-    passwordInput.send_keys("#Cinco5")
-    loginButton = world.browser.find_element_by_xpath("//input[@type='submit']")
-    loginButton.click()
+@step('When I enter a website "(.*)"')
+def enterSite(step, keyword):
+    site = world.browser.find_element_by_xpath("//input[@name='url']")
+    site.send_keys(keyword)
 
-@step("I go to mam")
-def goto_mam(step):
-    actionhover = world.browser.find_element_by_xpath("//li[@class='ui-state-default']")
-    hoverMenu = ActionChains(world.browser).move_to_element(actionhover)
-    hoverMenu.perform()
-    world.browser.find_element_by_xpath("//a[@href='index.php?p=mam3.browse']").click()
+@step("I start my test")
+def enderTest(step):
+    enterButton = world.browser.find_element_by_xpath("//input[@type='submit']")
+    enterButton.click()
 
-@step('I search for template name "(.*)"')
-def search_for_keyword(step, keyword):
-    searchBarClear = world.browser.find_element_by_xpath(".//*[@id='mam3_keyword_search']")
-    searchBarClear.clear()
-    searchBar = world.browser.find_element_by_xpath(".//*[@id='mam3_keyword_search']")
-    searchBar.send_keys(keyword)
+@step('I enter "(.*)" as Test Name')
+def testName(step, keyword):
+    enterTestName = world.browser.find_element_by_id("edit-test-name")
+    enterTestName.send_keys("Google Test")
+   
 
-@step("I enter a new email address")
-def enter_email(step):
-    emailField = world.browser.find_element_by_xpath("//*[@name]='email']")
-    emailField.send_keys("newuser" + str(randint(0,999)) + "@mailinator.com")
+@step('I search for "(.*)" in the dropdown')
+def dropdown(step, keyword):
+    select = world.browser.find_element_by_id("edit-tests-type-2")
+    for option in select.find_element_by_tag_name(option):
+        if option.text == (keyword):
+            option.click()
+            break
+        
 
+     
